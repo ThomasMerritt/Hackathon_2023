@@ -17,10 +17,9 @@ current_directory = os.getcwd() + "/history"
 shutil.copyfile(source_path, current_directory)
 
 connect = sqlite3.connect('history')
-# connect = sqlite3.connect('/Users/thomasmerritt/library/applicationsupport/google/chrome/default/history')
 cursor = connect.cursor()
 
-keywords = ["youtube", "tiktok"]
+keywords = ["youtube", "tiktok", "facebook"]
 truth = []
 
 for keyword in keywords:
