@@ -8,7 +8,7 @@ import platform
 if (platform.system() == 'Darwin'):
     source_path = '/Users/' + os.getlogin() + '/library/applicationsupport/google/chrome/default/history'
 elif (platform.system() == 'Windows'):
-    source_path = 'C:/Users/' + os.getlogin() + '/AppData/Local/Google/Chrome/UserData/Default'
+    source_path = 'C:/Users/' + os.getlogin() + '/AppData/Local/Google/Chrome/User Data/default/history'
 
 
 current_directory = os.getcwd() + "/history"
@@ -34,11 +34,11 @@ for keyword in keywords:
 for row in truth:
     print(row)
 
+# Close the connection
+connect.close()
+
 if (os.path.exists(current_directory)):
     os.remove(current_directory)
     print("File deleted successfully.")
 else:
     print("File does not exist")
-
-# Close the connection
-connect.close()
