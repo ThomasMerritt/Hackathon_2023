@@ -16,10 +16,11 @@ def sendSpam(name, lastName, email, infractions, badword):
         subject = "Ruh Oh! Little {} has said a no-no word!".format(name)
         body = """
         Dear Mr. or Mrs. {}, we deeply regret to inform you that 
-        your son / daughter has been saying bad words! Womp Womp! 
+        your son / daughter has been saying bad words! He said
+        the bad word, {}! Womp Womp! 
         This is but a courteous email to warn you as we wish no harm unto little {}, 
         just to let you know of his / her minor infraction. Hope you have a nice day!
-        """.format(lastName, name)
+        """.format(lastName, badword, name)
     elif infractions == 2:
         subject = "You've been a naughty, naughty boy"
         body = """
