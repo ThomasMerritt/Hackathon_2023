@@ -24,10 +24,12 @@ def main():
     #         continue
 
     print("yahallo")
-
+    result = ""
     mic = WhisperMic()
-    result = mic.listen()
-    print(result)
+
+    while result.find("Thomas")==-1:
+        result = mic.listen()
+        print(result)
 
 if __name__ == "__main__":
     main()
