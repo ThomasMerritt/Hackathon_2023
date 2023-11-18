@@ -8,16 +8,16 @@ badwords = []
 recognizer = speech_recognition.Recognizer()
 
 #defs
-def main():
+def main(name, lastName, email):
     timesSworn = 0
     firstPass = True
     with open("badwords.txt", "r") as nono:
         lines = nono.readlines()
         badwords.extend([word.strip().lower() for line in lines for word in line.split("\n") if word.strip()])
 
-    userName = input("What is your first name? ")
-    userLastName = input("What is your last name? ")
-    userEmail = input("What is your parent's email? ")
+    userName = name
+    userLastName = lastName
+    userEmail = email
     result = ""
     mic = WhisperMic()
 
