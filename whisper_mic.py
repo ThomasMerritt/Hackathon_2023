@@ -14,7 +14,7 @@ from utils import get_logger
 
 
 class WhisperMic:
-    def __init__(self,model="base",device=("cuda" if torch.cuda.is_available() else "cpu"),english=False,verbose=False,energy=300,pause=2,dynamic_energy=False,save_file=False, model_root="~/.cache/whisper",mic_index=None):
+    def __init__(self,model="base",device=("cuda" if torch.cuda.is_available() else "cpu"),english=False,verbose=False,energy=300,pause=1,dynamic_energy=False,save_file=False, model_root="~/.cache/whisper",mic_index=None):
         self.logger = get_logger("whisper_mic", "info")
         self.energy = energy
         self.pause = pause

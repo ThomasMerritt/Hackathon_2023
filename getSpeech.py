@@ -2,6 +2,7 @@
 import speech_recognition
 import pyttsx3
 from whisper_mic import WhisperMic
+import sendMail
 
 recognizer = speech_recognition.Recognizer()
 
@@ -23,13 +24,17 @@ def main():
     #         recognizer = speech_recognition.Recognizer()
     #         continue
 
-    print("yahallo")
+    userName = input("What is your name? ")
+    userEmail = input("What is your email? ")
     result = ""
     mic = WhisperMic()
 
-    while result.find("Thomas")==-1:
-        result = mic.listen()
-        print(result)
+    while True:
+        while result.find("thomas")==-1:
+            result = mic.listen().lower()
+            print(result)
+        sendMail.sendSpam(userName, userEmail)
+        result = ""
 
 if __name__ == "__main__":
     main()
