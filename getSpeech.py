@@ -33,10 +33,11 @@ def main():
         #     result = ""
         for word in badwords:
             temp = result.lower().count(word)
-            timesSworn += 1
-            sendMail.sendSpam(userName, userLastName, userEmail, timesSworn)
-            print("THAT'S A BAD WORD!")
-            result = ""
+            if temp > 0:
+                timesSworn += 1
+                sendMail.sendSpam(userName, userLastName, userEmail, timesSworn)
+                print("THAT'S A BAD WORD!")
+                result = ""
         print(result)
         result = ""
 
