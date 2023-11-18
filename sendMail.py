@@ -4,7 +4,7 @@ import smtplib
 import ssl
 from email.message import EmailMessage
 
-def sendSpam(name, email):
+def sendSpam(name, lastName, email, infractions):
 
     # Define email sender and receiver
     email_sender = 'sharan.singh0203@gmail.com'
@@ -12,10 +12,34 @@ def sendSpam(name, email):
     email_receiver = email
 
     # Set the subject and body of the email
-    subject = "You've been a naughty, naughty boy"
-    body = """
-    {} YOUR DAYS ARE NUMBERED.
-    """.format(name)
+    if infractions == 1:
+        subject = "Ruh Oh! Little {} has said a no-no word!".format(name)
+        body = """
+        Dear Mr. or Mrs. {}, we deeply regret to inform you that 
+        your son / daughter has been saying bad words! Womp Womp! 
+        This is but a courteous email to warn you as we wish no harm unto little {}, 
+        just to let you know of his / her minor infraction. Hope you have a nice day!
+        """.format(lastName, name)
+    elif infractions == 2:
+        subject = "You've been a naughty, naughty boy"
+        body = """
+        {} YOUR DAYS ARE NUMBERED.
+        """.format(name)
+    elif infractions == 3:
+        subject = "You've been a naughty, naughty boy"
+        body = """
+        {} YOUR DAYS ARE NUMBERED.
+        """.format(name)
+    elif infractions == 4:
+        subject = "You've been a naughty, naughty boy"
+        body = """
+        {} YOUR DAYS ARE NUMBERED.
+        """.format(name)
+    else:
+        subject = "You've been a naughty, naughty boy"
+        body = """
+        {} YOUR DAYS ARE NUMBERED.
+        """.format(name)
 
     em = EmailMessage()
     em['From'] = email_sender

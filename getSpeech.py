@@ -4,36 +4,40 @@ import pyttsx3
 from whisper_mic import WhisperMic
 import sendMail
 
+badwords = []
 recognizer = speech_recognition.Recognizer()
 
 #defs
 def main():
-    # while True:
-    #     try:
-    #         with speech_recognition.Microphone() as mic:
-    #             recognizer.adjust_for_ambient_noise(mic, duration = 0.2)
-    #             audio = recognizer.listen(mic)
+    timesSworn = 0
+    with open("badwords.txt", "r") as nono:
+        lines = nono.readlines()
+        badwords.extend([word.strip().lower() for line in lines for word in line.split("\n") if word.strip()])
 
-    #             text = recognizer.recognize_google(audio)
-    #             text = text.lower()
+    print(badwords)
 
-    #             print(text)
 
-    #     except:
-
-    #         recognizer = speech_recognition.Recognizer()
-    #         continue
-
-    userName = input("What is your name? ")
-    userEmail = input("What is your email? ")
+    userName = input("What is your first name? ")
+    userLastName = input("What is your last name? ")
+    userEmail = input("What is your parent's email? ")
     result = ""
     mic = WhisperMic()
 
     while True:
-        while result.find("thomas")==-1:
-            result = mic.listen().lower()
-            print(result)
-        sendMail.sendSpam(userName, userEmail)
+        temp = 0
+        result = mic.listen().lower()
+        # if any(result in badwords for word in result.split()):
+        #     timesSworn += 1
+        #     sendMail.sendSpam(userName, userLastName, userEmail, timesSworn)
+        #     print("THAT'S A BAD WORD!")
+        #     result = ""
+        for word in badwords:
+            temp = result.lower().count(word)
+            timesSworn += 1
+            sendMail.sendSpam(userName, userLastName, userEmail, timesSworn)
+            print("THAT'S A BAD WORD!")
+            result = ""
+        print(result)
         result = ""
 
 if __name__ == "__main__":
