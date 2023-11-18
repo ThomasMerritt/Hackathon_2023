@@ -3,8 +3,10 @@ import speech_recognition
 import pyttsx3
 from whisper_mic import WhisperMic
 import sendMail
+import db_extraction
 
 badwords = []
+listOfBadSites = []
 recognizer = speech_recognition.Recognizer()
 
 #defs
@@ -33,12 +35,13 @@ def main(name, lastName, email):
         for word in badwords:
             temp = result.lower().count(word)
             if temp > 0:
+                listOfBadSites = db_extraction.getTruth()
                 if firstPass:
                     timesSworn += 1
                     firstPass = False
                 else:
                     timesSworn += 0
-                sendMail.sendSpam(userName, userLastName, userEmail, timesSworn, word)
+                sendMail.sendSpam(userName, userLastName, userEmail, timesSworn, word, listOfBadSites)
                 print("THAT'S A BAD WORD!")
                 result = ""
         print(result)

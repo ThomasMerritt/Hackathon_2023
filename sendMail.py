@@ -4,7 +4,7 @@ import smtplib
 import ssl
 from email.message import EmailMessage
 
-def sendSpam(name, lastName, email, infractions, badword):
+def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
 
     # Define email sender and receiver
     email_sender = 'sharan.singh0203@gmail.com'
@@ -24,8 +24,8 @@ def sendSpam(name, lastName, email, infractions, badword):
     elif infractions == 2:
         subject = "You've been a naughty, naughty boy"
         body = """
-        {} YOUR DAYS ARE NUMBERED.
-        """.format(name)
+        {} YOU HAVE VISITED THESE SITES {}
+        """.format(name, sitesVisited)
     elif infractions == 3:
         subject = "You've been a naughty, naughty boy"
         body = """
