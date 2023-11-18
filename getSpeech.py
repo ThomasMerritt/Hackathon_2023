@@ -15,9 +15,6 @@ def main():
         lines = nono.readlines()
         badwords.extend([word.strip().lower() for line in lines for word in line.split("\n") if word.strip()])
 
-    print(badwords)
-
-
     userName = input("What is your first name? ")
     userLastName = input("What is your last name? ")
     userEmail = input("What is your parent's email? ")
@@ -41,7 +38,7 @@ def main():
                     firstPass = False
                 else:
                     timesSworn += 0
-                sendMail.sendSpam(userName, userLastName, userEmail, timesSworn)
+                sendMail.sendSpam(userName, userLastName, userEmail, timesSworn, word)
                 print("THAT'S A BAD WORD!")
                 result = ""
         print(result)

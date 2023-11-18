@@ -4,7 +4,7 @@ import smtplib
 import ssl
 from email.message import EmailMessage
 
-def sendSpam(name, lastName, email, infractions):
+def sendSpam(name, lastName, email, infractions, badword):
 
     # Define email sender and receiver
     email_sender = 'sharan.singh0203@gmail.com'
