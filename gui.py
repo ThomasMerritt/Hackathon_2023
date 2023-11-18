@@ -1,5 +1,5 @@
 import customtkinter
-#import getSpeech
+import getSpeech
 
 def login():
     firstName = entry1.get()  # Get the text from entry1 (Name)
@@ -18,7 +18,7 @@ def login():
             print("Recording data...")
             # Add functionality to record data or navigate to another page
             
-            #getSpeech.main(firstName, lastName, email)
+            getSpeech.main(firstName, lastName, email)
 
         record_button = customtkinter.CTkButton(master=next_page, text="Record", command=record_data)
         record_button.pack(pady=20)
