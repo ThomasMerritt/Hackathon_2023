@@ -22,14 +22,20 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         just to let you know of his / her minor infraction. Hope you have a nice day!
         """.format(lastName, badword, name)
     elif infractions == 2:
-        subject = "You've been a naughty, naughty boy"
+        subject = "Bad Move, Billy!"
         body = """
-        {} YOU HAVE VISITED THESE SITES {}
+        Oh gee oh golly! It seems as though your son / daughter {} has
+        said yet another Bad Word™! That's no good! As such, we will be revealing
+        the sites that your son / daughter frequents! Enjoy!
+        {}
         """.format(name, sitesVisited)
     elif infractions == 3:
-        subject = "You've been a naughty, naughty boy"
+        subject = "HEY! STOP!"
         body = """
-        {} YOUR DAYS ARE NUMBERED.
+        {}. SWEARING?! UNDER THE JURISDICTION OF THE ANTI-SLANDERINATOR?!
+        PREPOSTEROUS!
+        UNHEARD OF!
+        ABSOLUTELY UNFORGIVABLE!!!111!!!1!
         """.format(name)
     elif infractions == 4:
         subject = "You've been a naughty, naughty boy"
@@ -40,7 +46,8 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         subject = "You've been a naughty, naughty boy"
         body = """
         {} YOUR DAYS ARE NUMBERED.
-        """.format(name)
+        {}
+        """.format(name, sitesVisited)
 
     em = EmailMessage()
     em['From'] = email_sender
