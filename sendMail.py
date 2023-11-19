@@ -27,8 +27,9 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         Oh gee oh golly! It seems as though your son / daughter {} has
         said yet another Bad Word™! That's no good! As such, we will be revealing
         the sites that your son / daughter frequents! Enjoy!
+        Word Said: {}
         {}
-        """.format(name, sitesVisited)
+        """.format(name, badword, sitesVisited)
     elif infractions == 3:
         subject = "HEY! STOP!"
         body = """
@@ -46,14 +47,22 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         subject = "You've been a naughty, naughty boy"
         body = """
         {} YOUR DAYS ARE NUMBERED.
+        Word Said: {}
         {}
-        """.format(name, sitesVisited)
+        """.format(name,badword, sitesVisited)
 
     em = EmailMessage()
     em['From'] = email_sender
     em['To'] = email_receiver
     em['Subject'] = subject
     em.set_content(body)
+
+    if infractions == 1:
+        image_path = 'thumbsup.jpg'  # Replace with the actual path to your image
+        with open(image_path, 'rb') as img_file:
+            img_data = img_file.read()
+            em.add_attachment(img_data, maintype='image', subtype='jpg', filename='thumbsup.jpg')
+
 
     # Add SSL (layer of security)
     context = ssl.create_default_context()
