@@ -17,6 +17,11 @@ def main(name, lastName, email):
         lines = nono.readlines()
         badwords.extend([word.strip().lower() for line in lines for word in line.split("\n") if word.strip()])
 
+    badwords.extend("Thomas")
+    badwords.extend("Michael")
+    badwords.extend("Sharan")
+    badwords.extend("avocado")
+    badwords.extend("banana")
     userName = name
     userLastName = lastName
     userEmail = email
