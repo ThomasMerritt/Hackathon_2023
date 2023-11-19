@@ -22,7 +22,7 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         just to let you know of his / her minor infraction. Hope you have a nice day!
         """.format(lastName, badword, name)
     elif infractions == 2:
-        subject = "Bad Move, Billy!"
+        subject = "Bad Move, Child!"
         body = """
         Oh gee oh golly! It seems as though your son / daughter {} has
         said yet another Bad Word™! That's no good! As such, we will be revealing
