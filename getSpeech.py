@@ -17,8 +17,6 @@ def main(name, lastName, email):
         lines = nono.readlines()
         badwords.extend([word.strip().lower() for line in lines for word in line.split("\n") if word.strip()])
 
-    badwords.append("banana")
-
     userName = name
     userLastName = lastName
     userEmail = email
