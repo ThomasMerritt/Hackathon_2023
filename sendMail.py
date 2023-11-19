@@ -1,17 +1,14 @@
-#imports
 import os
 import smtplib
 import ssl
 from email.message import EmailMessage
 
 def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
-
-    # Define email sender and receiver
     email_sender = 'sharan.singh0203@gmail.com'
     email_password = "maxc yyjw urty esdd"
     email_receiver = email
 
-    # Set the subject and body of the email
+    # Set the subject and body of the email based on infractions
     if infractions == 1:
         subject = "Ruh Oh! Little {} has said a no-no word!".format(name)
         body = """
@@ -21,6 +18,7 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         This is but a courteous email to warn you as we wish no harm unto little {}, 
         just to let you know of his / her minor infraction. Hope you have a nice day!
         """.format(lastName, badword, name)
+        attachment_path = 'thumbsup.jpg'  # Attachment for infraction 1
     elif infractions == 2:
         subject = "Bad Move, Child!"
         body = """
@@ -30,6 +28,7 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         Word Said: {}
         {}
         """.format(name, badword, sitesVisited)
+        attachment_path = 'crying.jpg'  # Attachment for infraction 2
     elif infractions == 3:
         subject = "HEY! STOP!"
         body = """
@@ -38,18 +37,21 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
         UNHEARD OF!
         ABSOLUTELY UNFORGIVABLE!!!111!!!1!
         """.format(name)
+        attachment_path = 'angry.jpg'  # Attachment for infraction 3
     elif infractions == 4:
         subject = "You've been a naughty, naughty boy"
         body = """
         {} YOUR DAYS ARE NUMBERED.
         """.format(name)
+        attachment_path = 'thumbsdown.jpg'  # Attachment for infraction 4
     else:
         subject = "You've been a naughty, naughty boy"
         body = """
         {} YOUR DAYS ARE NUMBERED.
         Word Said: {}
         {}
-        """.format(name,badword, sitesVisited)
+        """.format(name, badword, sitesVisited)
+        attachment_path = 'uncanny.jpg'  # Attachment for other infractions
 
     em = EmailMessage()
     em['From'] = email_sender
@@ -57,12 +59,10 @@ def sendSpam(name, lastName, email, infractions, badword, sitesVisited):
     em['Subject'] = subject
     em.set_content(body)
 
-    if infractions == 1:
-        image_path = 'thumbsup.jpg'  # Replace with the actual path to your image
-        with open(image_path, 'rb') as img_file:
-            img_data = img_file.read()
-            em.add_attachment(img_data, maintype='image', subtype='jpg', filename='thumbsup.jpg')
-
+    # Add image attachment based on infractions
+    with open(attachment_path, 'rb') as img_file:
+        img_data = img_file.read()
+        em.add_attachment(img_data, maintype='image', subtype='jpg', filename=os.path.basename(attachment_path))
 
     # Add SSL (layer of security)
     context = ssl.create_default_context()
